@@ -30,7 +30,7 @@ namespace AdventOfCode
                     {
                         continue;
                     }
-                    object instance = ctor.Invoke(new object[] { });
+                    var instance = ctor.Invoke(new object[] { });
                     var day = instance as IDay;
 
                     var answer1 = day.ExecuteOne();
