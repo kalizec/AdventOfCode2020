@@ -3,12 +3,17 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 
 namespace AdventOfCode.Input
 {
-    public static class InputHelper
+    public class InputHelper
     {
         public const string EndPoint = "https://adventofcode.com";
+
+        public InputHelper (IOptions<InputConfiguration> options)
+        {
+        }
 
         public static async Task<string> Get(int year, int day)
         {

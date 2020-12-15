@@ -50,15 +50,15 @@ namespace AdventOfCode.Days
 
             for (var position = 0; position < streamLength; position++)
             {
-                var remainingLength = streamLength - position;
-                for (var length = 2; length < remainingLength; length++)
+                var maxLength = streamLength - position;
+                for (var length = 2; length < maxLength; length++)
                 {
                     var subArray = this.Stream.SubArray(position, length);
                     var sum = subArray.Sum();
                     if (sum == targetNumber)
                     {
                         Array.Sort(subArray);
-                        return subArray[0] + subArray[subArray.Length - 1];
+                        return subArray[0] + subArray[^1];
                     }
                     else if (sum > targetNumber)
                     {
@@ -68,7 +68,6 @@ namespace AdventOfCode.Days
                     {
                         // Do nothing, we'll increment and try again
                     }
-
                 }
             }
 
@@ -97,7 +96,7 @@ namespace AdventOfCode.Days
     {
         public static T[] SubArray<T>(this T[] array, int offset, int length)
         {
-            T[] result = new T[length];
+            var result = new T[length];
             Array.Copy(array, offset, result, 0, length);
             return result;
         }
